@@ -20,6 +20,18 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/sound_title" >
 
+    <PreferenceCategory
+        android:key="general_sounds"
+        android:title="@string/general_sounds_category" >
+        
+    <!-- Adaptive Playback -->
+    <Preference
+        android:key="adaptive_playback_settings"
+        android:icon="@drawable/ic_settings_sound"
+        android:title="@string/adaptive_playback_title"
+        android:summary="@string/adaptive_playback_summary"
+        android:fragment="com.rice.settings.fragments.sound.AdaptivePlayback" />
+
     <!-- Pulse music visualizer -->
     <Preference
         android:key="pulse_settings"
@@ -27,6 +39,8 @@
         android:title="@string/pulse_settings"
         android:summary="@string/pulse_settings_summary"
         android:fragment="com.rice.settings.fragments.sound.PulseSettings" />
+
+    </PreferenceCategory>
 
     <PreferenceCategory
         android:key="incall_vib_options"
