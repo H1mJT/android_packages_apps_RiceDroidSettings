@@ -15,17 +15,21 @@
  */
 package com.rice.settings.fragments;
 
+import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.provider.Settings;
+import android.text.TextUtils;
 
+import androidx.preference.ListPreference;
 import androidx.preference.Preference;
+import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
+import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.SwitchPreference;
 
 import com.android.internal.logging.nano.MetricsProto;
@@ -34,22 +38,37 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
 
-import java.util.List;
-import java.util.ArrayList;
+import com.rice.settings.preferences.SystemSettingListPreference;
+import com.rice.settings.preferences.SystemSettingSwitchPreference;
 
-import lineageos.providers.LineageSettings;
+import java.util.List;
 
 @SearchIndexable
-public class QSWeather extends SettingsPreferenceFragment implements
-        Preference.OnPreferenceChangeListener {
+public class Customizations extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
 
-    public static final String TAG = "QSWeather";
+    public static final String TAG = "Customizations";
+    
+    private static final String ALERT_SLIDER_PREF = "alert_slider_notifications";
+    
+    private Preference mAlertSlider;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        addPreferencesFromResource(R.xml.rice_settings_qs_weather);
+        addPreferencesFromResource(R.xml.rice_customizations);
+
+        final PreferenceScreen prefScreen = getPreferenceScreen();
+        final Context mContext = getActivity().getApplicationContext();
+        final ContentResolver resolver = mContext.getContentResolver();
+        final Resources res = mContext.getResources();
+
+        mAlertSlider = (Preference) prefScreen.findPreference(ALERT_SLIDER_PREF);
+        boolean mAlertSliderAvailable = res.getBoolean(
+                com.android.internal.R.bool.config_hasAlertSlider);
+        if (!mAlertSliderAvailable)
+            prefScreen.removePreference(mAlertSlider);
+
     }
 
     @Override
@@ -59,19 +78,26 @@ public class QSWeather extends SettingsPreferenceFragment implements
 
     @Override
     public int getMetricsCategory() {
-        return MetricsProto.MetricsEvent.CRDROID_SETTINGS;
+        return MetricsProto.MetricsEvent.RICE_SETTINGS;
     }
 
     /**
      * For search
      */
     public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
-            new BaseSearchIndexProvider(R.xml.rice_settings_qs_weather) {
+            new BaseSearchIndexProvider(R.xml.rice_customizations) {
 
                 @Override
                 public List<String> getNonIndexableKeys(Context context) {
                     List<String> keys = super.getNonIndexableKeys(context);
+                   final Resources res = context.getResources();
+
+                    boolean mAlertSliderAvailable = res.getBoolean(
+                            com.android.internal.R.bool.config_hasAlertSlider);
+                    if (!mAlertSliderAvailable)
+                        keys.add(ALERT_SLIDER_PREF);
                     return keys;
+
                 }
             };
 }

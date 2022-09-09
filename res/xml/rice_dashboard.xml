@@ -30,82 +30,16 @@
             
         <!-- About -->
         <Preference
-            settings:layout="@layout/arc_card_about"
             android:icon="@drawable/ic_settings_about"
             android:title="@string/about_settings_title"
             android:summary="@string/about_settings_summary"
             android:fragment="com.rice.settings.fragments.About" />
-
-        <!-- Buttons -->
-        <Preference
-            settings:layout="@layout/arc_card_about"
-            android:icon="@drawable/ic_settings_buttons"
-            android:title="@string/buttons_settings_title"
-            android:summary="@string/buttons_settings_summary"
-            android:fragment="com.rice.settings.fragments.Buttons" />
-            
-        <!-- LockScreenSettings -->
-        <Preference
-            settings:layout="@layout/arc_card_about"
-            android:icon="@drawable/ic_settings_lockscreens"
-            android:title="@string/lockscreen_settings_title"
-            android:summary="@string/lockscreen_settings_summary"
-            android:fragment="com.rice.settings.fragments.LockScreenSettings" />
-            
-        <!-- Miscellaneous -->
-        <Preference
-            settings:layout="@layout/arc_card_about"
-            android:icon="@drawable/ic_settings_miscs"
-            android:title="@string/misc_settings_title"
-            android:summary="@string/misc_settings_summary"
-            android:fragment="com.rice.settings.fragments.Miscellaneous" />
-            
-        <!-- Navigation -->
-        <Preference
-            settings:layout="@layout/arc_card_about"
-            android:icon="@drawable/ic_navigation"
-            android:title="@string/nav_settings_title"
-            android:summary="@string/nav_settings_summary"
-            android:fragment="com.rice.settings.fragments.Navigation" />
-            
-        <!-- Notifications -->
-        <Preference
-            settings:layout="@layout/arc_card_about"
-            android:icon="@drawable/ic_settings_notifications"
-            android:title="@string/notif_settings_title"
-            android:summary="@string/notif_settings_summary"
-            android:fragment="com.rice.settings.fragments.Notifications" />
-            
-        <!-- QuickSettings -->
-        <Preference
-            settings:layout="@layout/arc_card_about"
-            android:icon="@drawable/ic_settings_quicksettings"
-            android:title="@string/qs_settings_title"
-            android:summary="@string/qs_settings_summary"
-            android:fragment="com.rice.settings.fragments.QuickSettings" />
-            
-        <!-- Sound -->
-        <Preference
-            settings:layout="@layout/arc_card_about"
-            android:icon="@drawable/ic_settings_sound"
-            android:title="@string/sound_settings_title"
-            android:summary="@string/sound_settings_summary"
-            android:fragment="com.rice.settings.fragments.Sound" />
-
-        <!-- StatusBar -->
-        <Preference
-            settings:layout="@layout/arc_card_about"
-            android:icon="@drawable/ic_settings_statusbar"
-            android:title="@string/sb_settings_title"
-            android:summary="@string/sb_settings_summary"
-            android:fragment="com.rice.settings.fragments.StatusBar" />
             
         <!-- UserInterface -->
         <Preference
-            settings:layout="@layout/arc_card_about"
             android:icon="@drawable/ic_settings_ui"
             android:title="@string/ui_settings_title"
             android:summary="@string/ui_settings_summary"
-            android:fragment="com.rice.settings.fragments.UserInterface" />
+            android:fragment="com.rice.settings.fragments.Customizations" />
 
 </PreferenceScreen> 
