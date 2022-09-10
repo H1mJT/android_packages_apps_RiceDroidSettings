@@ -51,4 +51,17 @@
             android:targetClass="com.android.systemui.tuner.LockscreenActivity" />
     </Preference>
 
+    <com.rice.settings.preferences.SystemSettingSwitchPreference
+        android:key="reticker_status"
+        android:icon="@drawable/ic_message_fast"
+        android:title="@string/reticker_title"
+        android:summary="@string/reticker_summary" />
+
+    <com.rice.settings.preferences.SystemSettingSwitchPreference
+        android:key="reticker_colored"
+        android:icon="@drawable/ic_message_fast"
+        android:title="@string/reticker_colored_title"
+        android:summary="@string/reticker_colored_summary"
+        android:dependency="reticker_status" />
+
 </PreferenceScreen>
