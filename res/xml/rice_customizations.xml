@@ -26,7 +26,7 @@
         android:title="@string/alert_slider_notifications_title"
         android:summary="@string/alert_slider_notifications_summary"
         android:defaultValue="true" />
-
+    
        <com.rice.settings.preferences.SystemSettingSwitchPreference
             android:key="media_artwork_blur_enabled"
             android:icon="@drawable/ic_blur"
@@ -40,5 +40,15 @@
             android:defaultValue="1"
             android:max="25"
             settings:min="1" />
+
+    <Preference
+        android:key="lockscreen_shortcuts"
+        android:icon="@drawable/ic_lockscreen_shortcuts"
+        android:title="@string/lockscreen_shortcuts"
+        android:summary="@string/lockscreen_shortcuts_summary" >
+        <intent android:action="android.intent.action.MAIN"
+            android:targetPackage="com.android.systemui"
+            android:targetClass="com.android.systemui.tuner.LockscreenActivity" />
+    </Preference>
 
 </PreferenceScreen>
