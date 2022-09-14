@@ -22,7 +22,14 @@
 
     <PreferenceCategory
         android:title="@string/lockscreen_title">
-        
+
+    <com.rice.settings.preferences.SystemSettingSwitchPreference
+        android:key="lockscreen_battery_info"
+        android:icon="@drawable/ic_battery_charging"
+        android:title="@string/lockscreen_battery_info_title"
+        android:summary="@string/lockscreen_battery_info_summary"
+        android:defaultValue="true" />
+
     <com.rice.settings.preferences.SystemSettingSwitchPreference
         android:key="use_secondary_color_clock"
         android:icon="@drawable/ic_lock_clock"
