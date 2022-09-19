@@ -74,6 +74,11 @@ public class Customizations extends SettingsPreferenceFragment implements OnPref
     private static final String KEY_STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
     private static final String KEY_STATUS_BAR_BATTERY_STYLE = "status_bar_battery_style";
     private static final String KEY_STATUS_BAR_BATTERY_TEXT_CHARGING = "status_bar_battery_text_charging";
+    private static final String KEY_GAMES_SPOOF = "use_games_spoof";
+    private static final String KEY_PHOTOS_SPOOF = "use_photos_spoof";
+
+    private static final String SYS_GAMES_SPOOF = "persist.sys.pixelprops.games";
+    private static final String SYS_PHOTOS_SPOOF = "persist.sys.pixelprops.gphotos";
 
     private static final int PULLDOWN_DIR_NONE = 0;
     private static final int PULLDOWN_DIR_RIGHT = 1;
@@ -95,6 +100,8 @@ public class Customizations extends SettingsPreferenceFragment implements OnPref
     private SystemSettingSwitchPreference mOldMobileType;
     private SystemSettingSwitchPreference mBatteryTextCharging;
     private SystemSettingSwitchPreference mAlertSlider;
+    private SwitchPreference mGamesSpoof;
+    private SwitchPreference mPhotosSpoof;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -180,6 +187,14 @@ public class Customizations extends SettingsPreferenceFragment implements OnPref
             mQuickPulldown.setEntryValues(R.array.status_bar_quick_qs_pulldown_values_rtl);
         }
 
+        mGamesSpoof = (SwitchPreference) prefScreen.findPreference(KEY_GAMES_SPOOF);
+        mGamesSpoof.setChecked(SystemProperties.getBoolean(SYS_GAMES_SPOOF, false));
+        mGamesSpoof.setOnPreferenceChangeListener(this);
+
+        mPhotosSpoof = (SwitchPreference) prefScreen.findPreference(KEY_PHOTOS_SPOOF);
+        mPhotosSpoof.setChecked(SystemProperties.getBoolean(SYS_PHOTOS_SPOOF, true));
+        mPhotosSpoof.setOnPreferenceChangeListener(this);
+
         mAlertSlider = (SystemSettingSwitchPreference) prefScreen.findPreference(ALERT_SLIDER_PREF);
         boolean mAlertSliderAvailable = res.getBoolean(
                 com.android.internal.R.bool.config_hasAlertSlider);
@@ -215,6 +230,14 @@ public class Customizations extends SettingsPreferenceFragment implements OnPref
         } else if (preference == mQuickPulldown) {
             int value = Integer.parseInt((String) newValue);
             updateQuickPulldownSummary(value);
+            return true;
+        } else if (preference == mGamesSpoof) {
+            boolean value = (Boolean) newValue;
+            SystemProperties.set(SYS_GAMES_SPOOF, value ? "true" : "false");
+            return true;
+        } else if (preference == mPhotosSpoof) {
+            boolean value = (Boolean) newValue;
+            SystemProperties.set(SYS_PHOTOS_SPOOF, value ? "true" : "false");
             return true;
         }
         return false;
