@@ -362,7 +362,15 @@
         android:title="@string/theme_customization_icon_pack_title"
         android:summary="@string/theme_customization_icon_pack_summary"
         android:fragment="com.rice.settings.fragments.ui.StatusbarIcons"/>
-        
+     
+    <!-- Navbar Style -->
+    <Preference
+        android:key="android.theme.customization.navbar"
+        android:icon="@drawable/ic_navbar"
+        android:title="@string/theme_customization_navbar_title"
+        android:summary="@string/theme_customization_navbar_summary"
+        android:fragment="com.rice.settings.fragments.ui.NavbarStyles"/>
+   
     <!-- Signal icon style -->
     <Preference
         android:key="android.theme.customization.signal_icon"
