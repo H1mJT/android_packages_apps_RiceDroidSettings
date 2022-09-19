@@ -72,6 +72,14 @@
         android:targetClass="io.chaldeaprjkt.gamespace.settings.SettingsActivity" />
     </Preference>
     
+    <!-- Pocket Judge -->
+    <com.rice.settings.preferences.SystemSettingSwitchPreference
+        android:key="pocket_judge"
+        android:icon="@drawable/ic_pocket"
+        android:title="@string/pocket_judge_title"
+        android:summary="@string/pocket_judge_summary"
+        android:defaultValue="false" />
+
     <!-- Unlock FPS for specific games -->
     <SwitchPreference
         android:key="use_games_spoof"
