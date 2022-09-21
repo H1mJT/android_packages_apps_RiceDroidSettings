@@ -15,6 +15,8 @@
  */
 package com.rice.settings.fragments;
 
+import com.rice.settings.fragments.misc.SmartCharging;
+
 import static android.os.UserHandle.USER_CURRENT;
 import static android.os.UserHandle.USER_SYSTEM;
 
@@ -85,6 +87,7 @@ public class Customizations extends SettingsPreferenceFragment implements OnPref
     private static final String KEY_GAMES_SPOOF = "use_games_spoof";
     private static final String KEY_PHOTOS_SPOOF = "use_photos_spoof";
     private static final String QS_PANEL_STYLE  = "qs_panel_style";
+    private static final String SMART_CHARGING = "smart_charging";
 
     private static final String SYS_GAMES_SPOOF = "persist.sys.pixelprops.games";
     private static final String SYS_PHOTOS_SPOOF = "persist.sys.pixelprops.gphotos";
@@ -101,6 +104,7 @@ public class Customizations extends SettingsPreferenceFragment implements OnPref
     private Handler mHandler;
     private IOverlayManager mOverlayManager;
     private IOverlayManager mOverlayService;
+    private Preference mSmartCharging;
     private SystemSettingListPreference mQsStyle;
     private LineageSecureSettingListPreference mShowBrightnessSlider;
     private LineageSecureSettingListPreference mBrightnessSliderPosition;
@@ -126,6 +130,12 @@ public class Customizations extends SettingsPreferenceFragment implements OnPref
 	ContentResolver resolver = mContext.getContentResolver();
         final PreferenceScreen prefScreen = getPreferenceScreen();
         final Resources res = mContext.getResources();
+
+        mSmartCharging = (Preference) prefScreen.findPreference(SMART_CHARGING);
+        boolean mSmartChargingSupported = res.getBoolean(
+                com.android.internal.R.bool.config_smartChargingAvailable);
+        if (!mSmartChargingSupported)
+            prefScreen.removePreference(mSmartCharging);
 
         mShowBrightnessSlider =
                 (LineageSecureSettingListPreference) findPreference(KEY_SHOW_BRIGHTNESS_SLIDER);
@@ -377,6 +387,9 @@ public class Customizations extends SettingsPreferenceFragment implements OnPref
                     boolean mAlertSliderAvailable = res.getBoolean(
                             com.android.internal.R.bool.config_hasAlertSlider);
                             
+                    boolean mSmartChargingSupported = res.getBoolean(
+                            com.android.internal.R.bool.config_smartChargingAvailable);
+
                     if (!TelephonyUtils.isVoiceCapable(context)) {
                         keys.add(KEY_SHOW_FOURG);
                         keys.add(KEY_USE_OLD_MOBILETYPE);
@@ -384,6 +397,9 @@ public class Customizations extends SettingsPreferenceFragment implements OnPref
 
                     if (!mAlertSliderAvailable)
                         keys.add(ALERT_SLIDER_PREF);
+
+                    if (!mSmartChargingSupported)
+                        keys.add(SMART_CHARGING);
 
                     return keys;
 
