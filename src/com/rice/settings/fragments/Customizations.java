@@ -67,6 +67,8 @@ import lineageos.preference.LineageSecureSettingListPreference;
 import lineageos.preference.LineageSecureSettingSwitchPreference;
 import lineageos.providers.LineageSettings;
 
+import com.android.internal.util.rice.RiceUtils;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -89,6 +91,9 @@ public class Customizations extends SettingsPreferenceFragment implements OnPref
     private static final String QS_PANEL_STYLE  = "qs_panel_style";
     private static final String SMART_CHARGING = "smart_charging";
     private static final String POCKET_JUDGE = "pocket_judge";
+    private static final String SETTINGS_DASHBOARD_STYLE = "settings_dashboard_style";
+    private static final String SETTINGS_HOMEPAGE_MESSAGES = "settings_homepage_messages";
+    private static final String USE_STOCK_LAYOUT = "use_stock_layout";
 
     private static final String SYS_GAMES_SPOOF = "persist.sys.pixelprops.games";
     private static final String SYS_PHOTOS_SPOOF = "persist.sys.pixelprops.gphotos";
@@ -126,6 +131,9 @@ public class Customizations extends SettingsPreferenceFragment implements OnPref
     private SystemSettingSwitchPreference mAlertSlider;
     private SwitchPreference mGamesSpoof;
     private SwitchPreference mPhotosSpoof;
+    private SystemSettingListPreference mSettingsDashBoardStyle;
+    private SystemSettingSwitchPreference mSettingsMessages;
+    private SystemSettingSwitchPreference mUseStockLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -204,6 +212,13 @@ public class Customizations extends SettingsPreferenceFragment implements OnPref
         mPhotosSpoof.setChecked(SystemProperties.getBoolean(SYS_PHOTOS_SPOOF, true));
         mPhotosSpoof.setOnPreferenceChangeListener(this);
 
+        mSettingsDashBoardStyle = (SystemSettingListPreference) findPreference(SETTINGS_DASHBOARD_STYLE);
+        mSettingsDashBoardStyle.setOnPreferenceChangeListener(this);
+        mSettingsMessages = (SystemSettingSwitchPreference) findPreference(SETTINGS_HOMEPAGE_MESSAGES);
+        mSettingsMessages.setOnPreferenceChangeListener(this);
+        mUseStockLayout = (SystemSettingSwitchPreference) findPreference(USE_STOCK_LAYOUT);
+        mUseStockLayout.setOnPreferenceChangeListener(this);
+
         mOverlayService = IOverlayManager.Stub
         .asInterface(ServiceManager.getService(Context.OVERLAY_SERVICE));
 
@@ -274,6 +289,15 @@ public class Customizations extends SettingsPreferenceFragment implements OnPref
             return true;
         } else if (preference == mQsStyle) {
             mCustomSettingsObserver.observe();
+            return true;
+        } else if (preference == mSettingsDashBoardStyle) {
+           RiceUtils.showSettingsRestartDialog(getContext());
+            return true;
+        } else if (preference == mSettingsMessages) {
+            RiceUtils.showSettingsRestartDialog(getContext());
+            return true;
+        } else if (preference == mUseStockLayout) {
+            RiceUtils.showSettingsRestartDialog(getContext());
             return true;
         }
         return false;
