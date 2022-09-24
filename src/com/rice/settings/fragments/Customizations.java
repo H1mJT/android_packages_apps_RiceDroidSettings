@@ -56,6 +56,7 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
 
 import com.rice.settings.fragments.statusbar.Clock;
+import com.rice.settings.fragments.lockscreen.UdfpsSettings;
 import com.rice.settings.preferences.CustomSeekBarPreference;
 import com.rice.settings.preferences.SystemSettingListPreference;
 import com.rice.settings.preferences.SystemSettingSwitchPreference;
@@ -77,6 +78,11 @@ public class Customizations extends SettingsPreferenceFragment implements OnPref
 
     public static final String TAG = "Customizations";
     
+    private static final String LOCKSCREEN_CATEGORY = "lockscreen_category";
+    private static final String MISC_CATEGORY = "misc_category";
+    private static final String NOTIF_CATEGORY = "notifications_category";
+    private static final String KEY_UDFPS_SETTINGS = "udfps_settings";
+    private static final String KEY_RIPPLE_EFFECT = "enable_ripple_effect";
     private static final String ALERT_SLIDER_PREF = "alert_slider_notifications";
     private static final String KEY_SHOW_BRIGHTNESS_SLIDER = "qs_show_brightness_slider";
     private static final String KEY_BRIGHTNESS_SLIDER_POSITION = "qs_brightness_slider_position";
@@ -94,6 +100,7 @@ public class Customizations extends SettingsPreferenceFragment implements OnPref
     private static final String SETTINGS_DASHBOARD_STYLE = "settings_dashboard_style";
     private static final String SETTINGS_HOMEPAGE_MESSAGES = "settings_homepage_messages";
     private static final String USE_STOCK_LAYOUT = "use_stock_layout";
+    private static final String UDFPS_HAPTIC_FEEDBACK = "udfps_haptic_feedback";
 
     private static final String SYS_GAMES_SPOOF = "persist.sys.pixelprops.games";
     private static final String SYS_PHOTOS_SPOOF = "persist.sys.pixelprops.gphotos";
@@ -106,17 +113,12 @@ public class Customizations extends SettingsPreferenceFragment implements OnPref
     private static final int BATTERY_STYLE_PORTRAIT = 0;
     private static final int BATTERY_STYLE_TEXT = 4;
     private static final int BATTERY_STYLE_HIDDEN = 5;
-    
-    private boolean mAlertSliderSupported;
-    private boolean mSmartChargingSupported;
-    private boolean mPocketJudgeSupported;
-    private FingerprintManager mFingerprintManager;
 
     private Handler mHandler;
     private IOverlayManager mOverlayManager;
     private IOverlayManager mOverlayService;
     private Preference mSmartCharging;
-    private SystemSettingSwitchPreference mPocketJudge;
+    private SwitchPreference mPocketJudge;
     private SystemSettingListPreference mQsStyle;
     private LineageSecureSettingListPreference mShowBrightnessSlider;
     private LineageSecureSettingListPreference mBrightnessSliderPosition;
@@ -128,12 +130,14 @@ public class Customizations extends SettingsPreferenceFragment implements OnPref
     private SystemSettingSwitchPreference mShowFourg;
     private SystemSettingSwitchPreference mOldMobileType;
     private SystemSettingSwitchPreference mBatteryTextCharging;
-    private SystemSettingSwitchPreference mAlertSlider;
+    private Preference mAlertSlider;
     private SwitchPreference mGamesSpoof;
     private SwitchPreference mPhotosSpoof;
     private SystemSettingListPreference mSettingsDashBoardStyle;
     private SystemSettingSwitchPreference mSettingsMessages;
     private SystemSettingSwitchPreference mUseStockLayout;
+    private Preference mUdfpsSettings;
+    private SwitchPreference mRippleEffect;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -225,7 +229,41 @@ public class Customizations extends SettingsPreferenceFragment implements OnPref
         mQsStyle = (SystemSettingListPreference) findPreference(QS_PANEL_STYLE);
         mCustomSettingsObserver.observe();
 
-	checkIfPreferenceIsSupported();
+        PreferenceCategory lockscreenCategory = (PreferenceCategory) findPreference(LOCKSCREEN_CATEGORY);
+        PreferenceCategory miscCategory = (PreferenceCategory) findPreference(MISC_CATEGORY);
+        PreferenceCategory notifCategory = (PreferenceCategory) findPreference(NOTIF_CATEGORY);
+
+        FingerprintManager mFingerprintManager = (FingerprintManager)
+                getActivity().getSystemService(Context.FINGERPRINT_SERVICE);
+        mUdfpsSettings = findPreference(KEY_UDFPS_SETTINGS);
+        mRippleEffect = findPreference(KEY_RIPPLE_EFFECT);
+        
+        if (mFingerprintManager == null || !mFingerprintManager.isHardwareDetected()) {
+            lockscreenCategory.removePreference(mUdfpsSettings);
+            lockscreenCategory.removePreference(mRippleEffect);
+        } else {
+            if (!RiceUtils.isPackageInstalled(getContext(), "com.rice.udfps.icons")) {
+                lockscreenCategory.removePreference(mUdfpsSettings);
+            }
+        }
+        
+        boolean mAlertSliderSupported = getResources().getBoolean(
+                com.android.internal.R.bool.config_hasAlertSlider);
+	mAlertSlider = findPreference(ALERT_SLIDER_PREF);
+        if (!mAlertSliderSupported)
+           notifCategory.removePreference(mAlertSlider);
+        
+        boolean mSmartChargingSupported = getResources().getBoolean(
+                com.android.internal.R.bool.config_smartChargingAvailable);
+	mSmartCharging = findPreference(SMART_CHARGING);
+	if (!mSmartChargingSupported)
+	miscCategory.removePreference(mSmartCharging);
+	
+        boolean mPocketJudgeSupported = getResources().getBoolean(
+                com.android.internal.R.bool.config_pocketModeSupported);
+	mPocketJudge= findPreference(POCKET_JUDGE);
+	if (!mPocketJudgeSupported)
+	miscCategory.removePreference(mPocketJudge);
     }
 
     private CustomSettingsObserver mCustomSettingsObserver = new CustomSettingsObserver(mHandler);
@@ -301,42 +339,6 @@ public class Customizations extends SettingsPreferenceFragment implements OnPref
             return true;
         }
         return false;
-    }
-
-    private void checkIfPreferenceIsSupported() {
-	final PreferenceScreen prefScreen = getPreferenceScreen();   
-
-	final PreferenceCategory perfCatAS = (PreferenceCategory) prefScreen
-                .findPreference("alert_slider_category");
-
-	final PreferenceCategory perfCatSM = (PreferenceCategory) prefScreen
-                .findPreference("smart_charging_category");
-
-	final PreferenceCategory perfCatPJ = (PreferenceCategory) prefScreen
-                .findPreference("pocket_judge_category");
-                
-	final PreferenceCategory perfCatRipple = (PreferenceCategory) prefScreen
-                .findPreference("ripple_effect_category");
-
-        mAlertSliderSupported = getResources().getBoolean(
-                com.android.internal.R.bool.config_hasAlertSlider);         
-        mSmartChargingSupported = getResources().getBoolean(
-                com.android.internal.R.bool.config_smartChargingAvailable);
-        mPocketJudgeSupported = getResources().getBoolean(
-                com.android.internal.R.bool.config_pocketModeSupported);
-         
-        mFingerprintManager = (FingerprintManager)
-                getActivity().getSystemService(Context.FINGERPRINT_SERVICE);
-
-        if (!mAlertSliderSupported) {
-           prefScreen.removePreference(perfCatAS);
-        } else if (!mSmartChargingSupported) {
-            prefScreen.removePreference(perfCatSM);
-        } else if (!mPocketJudgeSupported) {
-            prefScreen.removePreference(perfCatPJ);
-        } else if (mFingerprintManager == null || !mFingerprintManager.isHardwareDetected()) {
-           prefScreen.removePreference(perfCatRipple);
-        }
     }
 
     private void updateQsStyle() {
