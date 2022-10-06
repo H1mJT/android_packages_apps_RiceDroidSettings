@@ -68,9 +68,9 @@
     <string name="changelog_rice_summary">View changes in the ROM installed</string>
     <string name="changelog_rice_error">Unable to load changelog</string>
     <string name="what_is_rice">What is riceDroid?</string>
-    <string name="what_is_rice_summary">RiceDroid is an organization that maintains the riceDroid android project.</string>
-    <string name="what_is_rise">What is RiseOS?</string>
-    <string name="what_is_rise_summary">Formerly RiceOS/riceDroid rom, taking a more serious approach with a new name  RISE (verb. move from a lower position to a higher one, come or go up.). RiseOS is an opensource android operating system that aims to bring the necessary system modifications while being neat, stable and fast.</string>
+    <string name="what_is_rice_summary">RiceDroid is an opensource android operating system that aims to bring the necessary system modifications while being neat, stable and fast.</string>
+    <string name="what_is_rise">What is RiseUI?</string>
+    <string name="what_is_rise_summary">RiseUI is the name for our firmware skin.</string>
     <string name="rice_terminology">Terminology</string>
     <string name="rice_terminology_summary">The RICE in the project refers to rice(food) itself, but in a sense it is indeed the term RICING in linux.</string>
 
