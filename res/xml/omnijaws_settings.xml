@@ -26,11 +26,30 @@
             android:title="@string/weather_icon_pack_info_title" />
 
       <com.rice.settings.preferences.SystemSettingListPreference
+        android:key="launcher_show_weather_temp"
+        android:icon="@drawable/ic_weather"
+        android:title="@string/launcher_weather_title"
+        android:dialogTitle="@string/launcher_weather_title"
+        android:entries="@array/qs_weather_entries"
+        android:summary="%s"
+        android:entryValues="@array/qs_weather_values" />
+        
+      <com.rice.settings.preferences.SystemSettingListPreference
+        android:key="kg_show_weather_temp"
+        android:icon="@drawable/ic_weather"
+        android:title="@string/kg_weather_title"
+        android:dialogTitle="@string/kg_weather_title"
+        android:entries="@array/qs_weather_entries"
+        android:summary="%s"
+        android:entryValues="@array/qs_weather_values" />
+
+      <com.rice.settings.preferences.SystemSettingListPreference
         android:key="qs_show_weather_temp"
         android:icon="@drawable/ic_weather"
         android:title="@string/qs_weather_title"
-        android:dialogTitle="@string/qs_weather_dialog_title"
+        android:dialogTitle="@string/qs_weather_title"
         android:entries="@array/qs_weather_entries"
+        android:summary="%s"
         android:entryValues="@array/qs_weather_values" />
 
       <com.rice.settings.preferences.SystemSettingListPreference
@@ -39,6 +58,7 @@
         android:title="@string/qsweather_dialog_title"
         android:dialogTitle="@string/qsweather_dialog_title"
         android:entries="@array/qsweather_position_entries"
+        android:summary="%s"
         android:entryValues="@array/qsweather_position_values" />
 
     <Preference
