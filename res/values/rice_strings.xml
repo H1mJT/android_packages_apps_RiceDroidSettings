@@ -1247,6 +1247,7 @@
     <string name="qs_temperature_show_scale_hide_image">Show temp with scale</string>
     <string name="qs_temperature_hide_scale_hide_image">Show temp without scale</string>
     <string name="qs_show_image">Show image</string>
+    <string name="weather_show_all_condition">Show temp with scale,image and weather condition</string>
     <string name="qsweather_position_qqs">QuickSettings</string>
     <string name="qsweather_position_qsb">QuickStatusbar</string>
     <string name="qsweather_position_both">Both</string>

@@ -30,18 +30,18 @@
         android:icon="@drawable/ic_weather"
         android:title="@string/launcher_weather_title"
         android:dialogTitle="@string/launcher_weather_title"
-        android:entries="@array/qs_weather_entries"
+        android:entries="@array/kg_launcher_weather_entries"
         android:summary="%s"
-        android:entryValues="@array/qs_weather_values" />
+        android:entryValues="@array/kg_launcher_weather_values" />
         
       <com.rice.settings.preferences.SystemSettingListPreference
         android:key="kg_show_weather_temp"
         android:icon="@drawable/ic_weather"
         android:title="@string/kg_weather_title"
         android:dialogTitle="@string/kg_weather_title"
-        android:entries="@array/qs_weather_entries"
+        android:entries="@array/kg_launcher_weather_entries"
         android:summary="%s"
-        android:entryValues="@array/qs_weather_values" />
+        android:entryValues="@array/kg_launcher_weather_values" />
 
       <com.rice.settings.preferences.SystemSettingListPreference
         android:key="qs_show_weather_temp"
