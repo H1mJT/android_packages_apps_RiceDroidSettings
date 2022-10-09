@@ -125,6 +125,14 @@
         android:summary="@string/smart_charging_summary"
         android:fragment="com.rice.settings.fragments.misc.SmartCharging"/>
 
+    <!-- Smart Pixels -->
+    <Preference
+        android:key="smart_pixels"
+        android:icon="@drawable/ic_smart_pixels"
+        android:title="@string/smart_pixels_title" 
+        android:summary="@string/smart_pixels_summary" 
+        android:fragment="com.rice.settings.fragments.ui.SmartPixels" />
+
     <!-- Unlock FPS for specific games -->
     <SwitchPreference
         android:key="use_games_spoof"
