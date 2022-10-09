@@ -189,7 +189,14 @@
         android:summary="@string/less_boring_heads_up_summary"
         android:defaultValue="false"
         android:dependency="heads_up_notifications_enabled" />
-  
+
+    <!-- Notification guts kill app button -->
+    <com.rice.settings.preferences.SystemSettingSwitchPreference
+        android:key="notification_guts_kill_app_button"
+        android:icon="@drawable/ic_kill"
+        android:title="@string/notification_guts_kill_app_button_title"
+        android:summary="@string/notification_guts_kill_app_button_summary" />
+
     <com.rice.settings.preferences.SystemSettingSwitchPreference
         android:key="reticker_status"
         android:icon="@drawable/ic_message_fast"
