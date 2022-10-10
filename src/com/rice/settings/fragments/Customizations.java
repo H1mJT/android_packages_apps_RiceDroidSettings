@@ -105,6 +105,7 @@ public class Customizations extends SettingsPreferenceFragment implements OnPref
     private static final String USE_STOCK_LAYOUT = "use_stock_layout";
     private static final String UDFPS_HAPTIC_FEEDBACK = "udfps_haptic_feedback";
     private static final String SMART_PIXELS = "smart_pixels";
+    private static final String KEY_SYS_INFO = "qs_system_info";
 
     private static final String SYS_GAMES_SPOOF = "persist.sys.pixelprops.games";
     private static final String SYS_PHOTOS_SPOOF = "persist.sys.pixelprops.gphotos";
@@ -145,6 +146,7 @@ public class Customizations extends SettingsPreferenceFragment implements OnPref
     private SwitchPreference mFPVibAuth;
     private SwitchPreference mFPVibError;
     private Preference mSmartPixels;
+    private ListPreference mSystemInfo;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -281,6 +283,12 @@ public class Customizations extends SettingsPreferenceFragment implements OnPref
                 com.android.internal.R.bool.config_supportSmartPixels);
         if (!mSmartPixelsSupported)
             prefScreen.removePreference(mSmartPixels);
+
+        mSystemInfo = (ListPreference) findPreference(KEY_SYS_INFO);
+        boolean mSystemInfoSupported = mContext.getResources().getBoolean(
+                com.android.internal.R.bool.config_supportSystemInfo);
+        if (!mSystemInfoSupported)
+            prefScreen.removePreference(mSystemInfo);
     }
 
     private CustomSettingsObserver mCustomSettingsObserver = new CustomSettingsObserver(mHandler);
