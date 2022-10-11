@@ -106,6 +106,10 @@ public class Customizations extends SettingsPreferenceFragment implements OnPref
     private static final String UDFPS_HAPTIC_FEEDBACK = "udfps_haptic_feedback";
     private static final String SMART_PIXELS = "smart_pixels";
     private static final String KEY_SYS_INFO = "qs_system_info";
+    private static final String KEY_VIBRATE_CATEGORY = "incall_vib_options";
+    private static final String KEY_VIBRATE_CONNECT = "vibrate_on_connect";
+    private static final String KEY_VIBRATE_CALLWAITING = "vibrate_on_callwaiting";
+    private static final String KEY_VIBRATE_DISCONNECT = "vibrate_on_disconnect";
 
     private static final String SYS_GAMES_SPOOF = "persist.sys.pixelprops.games";
     private static final String SYS_PHOTOS_SPOOF = "persist.sys.pixelprops.gphotos";
@@ -158,6 +162,12 @@ public class Customizations extends SettingsPreferenceFragment implements OnPref
 	ContentResolver resolver = mContext.getContentResolver();
         final PreferenceScreen prefScreen = getPreferenceScreen();
 
+	final PreferenceCategory vibCategory = prefScreen.findPreference(KEY_VIBRATE_CATEGORY);
+
+        if (!TelephonyUtils.isVoiceCapable(getActivity())) {
+            prefScreen.removePreference(vibCategory);
+        }
+        
         mShowBrightnessSlider =
                 (LineageSecureSettingListPreference) findPreference(KEY_SHOW_BRIGHTNESS_SLIDER);
         mShowBrightnessSlider.setOnPreferenceChangeListener(this);
@@ -450,6 +460,13 @@ public class Customizations extends SettingsPreferenceFragment implements OnPref
                 @Override
                 public List<String> getNonIndexableKeys(Context context) {
                     List<String> keys = super.getNonIndexableKeys(context);
+
+                    if (!TelephonyUtils.isVoiceCapable(context)) {
+                        keys.add(KEY_VIBRATE_CATEGORY);
+                        keys.add(KEY_VIBRATE_CONNECT);
+                        keys.add(KEY_VIBRATE_CALLWAITING);
+                        keys.add(KEY_VIBRATE_DISCONNECT);
+                    }
 
                     boolean mSmartPixelsSupported = context.getResources().getBoolean(
                             com.android.internal.R.bool.config_supportSmartPixels);
