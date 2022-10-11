@@ -336,12 +336,12 @@
          android:min="1" />
 
         <com.rice.settings.preferences.SystemSettingListPreference
-            android:key="qs_system_info"
-            android:icon="@drawable/ic_memory"
-            android:title="@string/qs_system_info_title"
-            android:entries="@array/qs_system_info_entries"
-            android:entryValues="@array/qs_system_info_values"
-            android:defaultValue="0" />
+        android:key="qs_system_info"
+        android:icon="@drawable/ic_memory"
+        android:title="@string/qs_system_info_title"
+        android:entries="@array/qs_system_info_entries"
+        android:entryValues="@array/qs_system_info_values"
+        android:defaultValue="0" />
        
     </PreferenceCategory>
 
@@ -591,6 +591,13 @@
         android:icon="@drawable/ic_counter"
         android:title="@string/statusbar_notif_count_title"
         android:summary="@string/statusbar_notif_count_summary"
+        android:defaultValue="false" />
+
+        <!-- Wi-Fi Standard icon -->
+    <com.rice.settings.preferences.preference.SecureSettingSwitchPreference
+        android:key="show_wifi_standard_icon"
+        android:title="@string/show_wifi_standard_icon_title"
+        android:summary="@string/show_wifi_standard_icon_summary"
         android:defaultValue="false" />
 
     <Preference
