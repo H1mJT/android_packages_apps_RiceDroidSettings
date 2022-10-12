@@ -85,8 +85,8 @@
     <!-- Share riceDroid -->
     <string name="share_rice_title">Share riceDroid</string>
     <string name="share_rice_summary">Let others know about riceDroid</string>
-    <string name="share_message">Check out if #riceDroidAndroid is available for your device @ https://rice.net/</string>
-    <string name="share_chooser_title">Share riceDroid</string>
+    <string name="share_message">Check out if #riceDroidAndroid is available for your device @ https://github.com/riceDroid-Devices/</string>
+    <string name="share_chooser_title">#getriced</string>
 
     <!-- Sites riceDroid -->
     <string name="rice_source_title">GitHub</string>
@@ -1163,15 +1163,15 @@
     <string name="nav_settings_title">Navigation</string>
     <string name="nav_settings_summary">Customize navigation behavior</string>
     <string name="notif_settings_title">Notification</string>
-    <string name="notif_settings_summary">Control notifications layout, patterns and more</string>
+    <string name="notif_settings_summary">Control notifications and more</string>
     <string name="qs_settings_title">QuickSettings</string>
-    <string name="qs_settings_summary">Modify QS panel columns, icons and more</string>
+    <string name="qs_settings_summary">QuickSettings customizations</string>
     <string name="sound_settings_title">Sound</string>
-    <string name="sound_settings_summary">Sounds and vibrations settings</string>
+    <string name="sound_settings_summary">Sounds and vibrations customizations</string>
     <string name="sb_settings_title">StatusBar</string>
     <string name="sb_settings_summary">Customize statusbar icons, layout etc</string>
     <string name="ui_settings_title">User Interface</string>
-    <string name="ui_settings_summary">Customize UI colors, icons, fonts and more</string>
+    <string name="ui_settings_summary">Customize UI colors, icons, fonts etc</string>
     <string name="rice_illustration_summary">Welcome to our kitchen!</string>
     <string name="rice_linkers">Links and fun stuff</string>
 

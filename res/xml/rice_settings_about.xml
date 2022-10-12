@@ -57,13 +57,6 @@
                android:data="https://raw.githubusercontent.com/RiceDroid/android_vendor_rice/twelve/prebuilt/common/etc/Changelog.txt" />
     </Preference>
 
-    <!-- riceDroid Translate -->
-    <Preference
-        android:key="rice_translate"
-        android:icon="@drawable/ic_translate"
-        android:title="@string/rice_translate_title"
-        android:summary="@string/rice_translate_summary" />
-
     <!-- riceDroid Donate -->
     <Preference
         android:key="rice_donate"
@@ -93,17 +86,6 @@
         android:icon="@drawable/ic_update"
         settings:controller="com.android.settings.system.SystemUpdatePreferenceController">
         <intent android:action="android.settings.SYSTEM_UPDATE_SETTINGS" />
-    </Preference>
-
-    <!-- riceDroid Drill -->
-    <Preference
-        android:key="rice_drill"
-        android:icon="@drawable/ic_drill"
-        android:title="@string/drill_title"
-        android:summary="@string/drill_summary">
-            <intent
-               android:action="android.intent.action.VIEW"
-               android:data="https://www.xda-developers.com/how-to-take-logs-android/" />
     </Preference>
     
      </PreferenceCategory>

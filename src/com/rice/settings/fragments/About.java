@@ -43,14 +43,12 @@ public class About extends SettingsPreferenceFragment {
     private String KEY_RICE_SOURCE = "rice_source";
     private String KEY_RICE_TELEGRAM = "rice_telegram";
     private String KEY_RICE_SHARE = "rice_share";
-    private String KEY_RICE_TRANSLATE = "rice_translate";
     private String KEY_RICE_TELEGRAM_CHANNEL = "rice_telegram_channel";
 
     private Preference mDonate;
     private Preference mSourceUrl;
     private Preference mTelegramUrl;
     private Preference mShare;
-    private Preference mTranslate;
     private Preference mTelegramChannelUrl;
 
     @Override
@@ -62,7 +60,6 @@ public class About extends SettingsPreferenceFragment {
         mSourceUrl = findPreference(KEY_RICE_SOURCE);
         mTelegramUrl = findPreference(KEY_RICE_TELEGRAM);
         mShare = findPreference(KEY_RICE_SHARE);
-        mTranslate = findPreference(KEY_RICE_TRANSLATE);
         mTelegramChannelUrl = findPreference(KEY_RICE_TELEGRAM_CHANNEL);
     }
 
@@ -81,8 +78,6 @@ public class About extends SettingsPreferenceFragment {
             intent.putExtra(Intent.EXTRA_TEXT, String.format(
                     getActivity().getString(R.string.share_message), Build.MODEL));
             startActivity(Intent.createChooser(intent, getActivity().getString(R.string.share_chooser_title)));
-        } else if (preference == mTranslate) {
-            launchUrl("https://crdroid.net/translations.php");
         } else if (preference == mTelegramChannelUrl) {
             launchUrl("https://t.me/riceDroidNews");
         }
