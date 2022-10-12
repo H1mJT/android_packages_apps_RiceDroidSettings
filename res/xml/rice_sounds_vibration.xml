@@ -19,7 +19,15 @@
     xmlns:lineage="http://schemas.android.com/apk/res/lineageos.platform"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/sound_title" >
-    
+
+    <!-- Pulse music visualizer -->
+    <Preference
+        android:key="pulse_settings"
+        android:icon="@drawable/ic_pulse"
+        android:title="@string/pulse_settings"
+        android:summary="@string/pulse_settings_summary"
+        android:fragment="com.rice.settings.fragments.sound.PulseSettings" />
+
     <PreferenceCategory
         android:key="incall_vib_options"
         android:title="@string/incall_vibration_category" >
