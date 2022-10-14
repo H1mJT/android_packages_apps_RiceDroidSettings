@@ -50,7 +50,7 @@ public class UdfpsSettings extends SettingsPreferenceFragment implements OnPrefe
 
     private static final String UDFPS_ANIM_PREVIEW = "udfps_recognizing_animation_preview";
     private static final String UDFPS_ICON_PICKER = "udfps_icon_picker";
-    private static final String SCREEN_OFF_UDFPS = "screen_off_udfps";
+    private static final String SCREEN_OFF_UDFPS = "screen_off_udfps_enabled";
 
     private Preference mUdfpsAnimPreview;
     private Preference mUdfpsIconPicker;
