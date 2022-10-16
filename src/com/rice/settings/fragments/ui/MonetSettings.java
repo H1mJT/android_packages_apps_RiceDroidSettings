@@ -40,13 +40,6 @@ public class MonetSettings extends SettingsPreferenceFragment {
 
     final static String TAG = "MonetSettings";
 
-    private static final String PREF_CUSTOM_COLOR = "monet_engine_custom_color";
-    private static final String PREF_COLOR_OVERRIDE = "monet_engine_color_override";
-    private static final String PREF_CHROMA_FACTOR = "monet_engine_chroma_factor";
-    private static final String PREF_ACCURATE_SHADES = "monet_engine_accurate_shades";
-    private static final String PREF_LINEAR_LIGHTNESS = "monet_engine_linear_lightness";
-    private static final String PREF_WHITE_LUMINANCE = "monet_engine_white_luminance_user";
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
