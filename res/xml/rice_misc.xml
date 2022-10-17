@@ -61,6 +61,12 @@
         android:summary="@string/smart_pixels_summary" 
         android:fragment="com.rice.settings.fragments.ui.SmartPixels" />
 
+    <SwitchPreference
+        android:key="system_boost"
+        android:icon="@drawable/ic_memory"
+        android:title="@string/system_boost_title"
+        android:summary="@string/system_boost_summary"/>
+
     <!-- Unlock FPS for specific games -->
     <SwitchPreference
         android:key="use_games_spoof"

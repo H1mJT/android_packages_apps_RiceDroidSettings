@@ -1319,4 +1319,7 @@
     <string name="adaptive_playback_intro_text">Automatically pauses media when the volume is muted and will resume automatically when volume is restored within the set time</string>
     <string name="adaptive_playback_timeout_title">Playback timeout</string>
     <string name="general_sounds_category">General sounds settings</string>
+    
+    <string name="system_boost_title">System Boost</string>
+    <string name="system_boost_summary">Boost system components for better performance (may increase power consumption)</string>
 </resources>
