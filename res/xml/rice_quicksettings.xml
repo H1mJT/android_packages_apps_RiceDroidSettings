@@ -75,6 +75,16 @@
         android:title="@string/disable_qs_title"
         android:summary="@string/disable_qs_summary" />
         
+    <com.rice.settings.preferences.SystemSettingSeekBarPreference
+        android:key="qs_header_clock_size"
+        android:icon="@drawable/ic_font"
+        android:title="@string/qs_clock_font_size_title"
+        android:max="27"
+        settings:min="10"
+        settings:interval="1"
+        android:defaultValue="14"
+        settings:units="@string/unit_pixels" />
+
     <lineageos.preference.LineageSystemSettingListPreference
         android:key="qs_quick_pulldown"
         android:icon="@drawable/ic_arrow_down"
@@ -105,7 +115,7 @@
          android:max="100"
          android:min="1" />
 
-        <com.rice.settings.preferences.SystemSettingListPreference
+    <com.rice.settings.preferences.SystemSettingListPreference
         android:key="qs_system_info"
         android:icon="@drawable/ic_memory"
         android:title="@string/qs_system_info_title"
