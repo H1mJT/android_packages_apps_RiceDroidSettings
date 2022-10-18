@@ -20,6 +20,16 @@
     android:key="monet_settings"
     android:title="@string/monet_title">
 
+    <!-- Monet Schemes -->
+    <com.rice.settings.preferences.SecureSettingListPreference
+         android:key="theme_customization_overlay_packages"
+         android:icon="@drawable/ic_color_bucket"
+         android:title="@string/monet_color_schemes_styles_title"
+         android:entries="@array/custom_color_scheme_entries"
+         android:entryValues="@array/custom_color_scheme_values"
+         android:defaultValue="@string/custom_color_scheme_ts_value"
+         android:summary="%s" />
+
     <!-- Monet themes -->
     <com.rice.settings.preferences.SystemSettingListPreference
          android:key="monet_themes_style"

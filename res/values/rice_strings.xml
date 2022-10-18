@@ -1322,4 +1322,23 @@
     
     <string name="system_boost_title">System Boost</string>
     <string name="system_boost_summary">Boost system components for better performance (may increase power consumption)</string>
+    
+    <!-- ColorSchemes -->
+    <string name="monet_color_schemes_styles_title">Monet Color schemes</string>
+    <string name="style_expressive">Expressive</string>
+    <string name="style_spritz">Spritz</string>
+    <string name="style_tonal_spot">Tonal Spot</string>
+    <string name="style_fruit_salad">Fruit Salad</string>
+    <string name="style_rainbow">Rainbow</string>
+    <string name="style_vibrant">Vibrant</string>
+    <string name="style_vivid">Vivid</string>
+
+    <!-- Escaped color scheme json objects -->    
+    <string name="custom_color_scheme_ex_value">{\"android.theme.customization.system_palette\":\"B1611C\",\"android.theme.customization.theme_style\":\"EXPRESSIVE\"}</string>
+    <string name="custom_color_scheme_sz_value">{\"android.theme.customization.system_palette\":\"B1611C\",\"android.theme.customization.theme_style\":\"SPRITZ\"}</string>
+    <string name="custom_color_scheme_ts_value">{\"android.theme.customization.system_palette\":\"B1611C\",\"android.theme.customization.theme_style\":\"TONAL_SPOT\"}</string>
+    <string name="custom_color_scheme_fs_value">{\"android.theme.customization.system_palette\":\"B1611C\",\"android.theme.customization.theme_style\":\"FRUIT_SALAD\"}</string>
+    <string name="custom_color_scheme_rb_value">{\"android.theme.customization.system_palette\":\"B1611C\",\"android.theme.customization.theme_style\":\"RAINBOW\"}</string>
+    <string name="custom_color_scheme_vb_value">{\"android.theme.customization.system_palette\":\"B1611C\",\"android.theme.customization.theme_style\":\"VIBRANT\"}</string>
+    <string name="custom_color_scheme_vv_value">{\"android.theme.customization.system_palette\":\"B1611C\",\"android.theme.customization.theme_style\":\"VIVID\"}</string>
 </resources>
