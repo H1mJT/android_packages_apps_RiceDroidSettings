@@ -46,6 +46,13 @@
         android:max="25"
         settings:min="1" />
       
+    <!-- Notification guts kill app button -->
+    <com.rice.settings.preferences.SystemSettingSwitchPreference
+        android:key="notification_guts_kill_app_button"
+        android:icon="@drawable/ic_kill"
+        android:title="@string/notification_guts_kill_app_button_title"
+        android:summary="@string/notification_guts_kill_app_button_summary" />
+
     <com.rice.settings.preferences.GlobalSettingSwitchPreference
         android:key="heads_up_notifications_enabled"
         android:icon="@drawable/ic_headsup"
@@ -61,12 +68,12 @@
         android:defaultValue="false"
         android:dependency="heads_up_notifications_enabled" />
 
-    <!-- Notification guts kill app button -->
     <com.rice.settings.preferences.SystemSettingSwitchPreference
-        android:key="notification_guts_kill_app_button"
-        android:icon="@drawable/ic_kill"
-        android:title="@string/notification_guts_kill_app_button_title"
-        android:summary="@string/notification_guts_kill_app_button_summary" />
+        android:key="notification_sound_vib_screen_on"
+        android:icon="@drawable/ic_bell_ring"
+        android:title="@string/notification_sound_vib_screen_on_title"
+        android:summary="@string/notification_sound_vib_screen_on_summary"
+        android:defaultValue="true" />
 
     <com.rice.settings.preferences.SystemSettingSwitchPreference
         android:key="reticker_status"
