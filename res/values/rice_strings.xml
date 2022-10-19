@@ -1325,6 +1325,7 @@
     
     <!-- ColorSchemes -->
     <string name="monet_color_schemes_styles_title">Monet Color schemes</string>
+    <string name="monet_footer_message">Due to current system limitations, users needs to re-apply monet color schemes after changing wallpaper color palette.</string>
     <string name="style_expressive">Expressive</string>
     <string name="style_spritz">Spritz</string>
     <string name="style_tonal_spot">Tonal Spot</string>
